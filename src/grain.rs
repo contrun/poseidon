@@ -1,6 +1,8 @@
 use crate::spec::MDSMatrix;
+use alloc::vec;
+use alloc::vec::Vec;
+use core::marker::PhantomData;
 use halo2curves::FieldExt;
-use std::marker::PhantomData;
 
 /// Grain initializes round constants and MDS matrix at given sponge parameters
 pub(super) struct Grain<F: FieldExt, const T: usize, const RATE: usize> {
@@ -19,7 +21,7 @@ impl<F: FieldExt, const T: usize, const RATE: usize> Grain<F, T, RATE> {
 
         let field_size = F::NUM_BITS;
         let n_bytes = F::Repr::default().as_ref().len();
-        assert_eq!((field_size as f32 / 8.0).ceil() as usize, n_bytes);
+        assert_eq!(((field_size + 7) / 8) as usize, n_bytes);
         assert_eq!(r_f % 2, 0);
 
         // Pseudo random number generation. See:

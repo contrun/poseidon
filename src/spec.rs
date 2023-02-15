@@ -1,6 +1,8 @@
-use std::ops::Index;
+use core::ops::Index;
 
 use crate::{grain::Grain, matrix::Matrix};
+use alloc::vec;
+use alloc::vec::Vec;
 use halo2curves::FieldExt;
 
 /// `State` is structure `T` sized field elements that are subjected to

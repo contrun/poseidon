@@ -3,6 +3,7 @@
 //! with the intention of construction of parameters and are not used in the
 //! actual permutation process.
 
+use alloc::vec::Vec;
 use halo2curves::FieldExt;
 
 #[derive(PartialEq, Debug, Clone)]

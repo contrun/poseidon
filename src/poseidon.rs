@@ -1,4 +1,5 @@
 use crate::{Spec, State};
+use alloc::vec::Vec;
 use halo2curves::FieldExt;
 
 /// Poseidon hasher that maintains state and inputs and yields single element
@@ -77,12 +78,11 @@ mod tests {
     use paste::paste;
     use rand_core::OsRng;
 
-
     const R_F: usize = 8;
     const R_P: usize = 57;
     const T: usize = 5;
     const RATE: usize = 4;
-    
+
     fn gen_random_vec(len: usize) -> Vec<Fr> {
         (0..len).map(|_| Fr::random(OsRng)).collect::<Vec<Fr>>()
     }
